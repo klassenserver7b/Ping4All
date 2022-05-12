@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link href="style.css" rel="stylesheet">
+    <title>
+        Website Scan
+    </title>
+</head>
+
+<body>
+    <h2>Websiteliste</h2>
+    <select id="websiteselect" class="dropdown" size=2>
+    </select>
+    <br>
+    <div id="deactivateMessage" class="message"></div>
+    <br>
+    <button id="websiteremove" onclick="startRemove()">Entfernen</button>
+    <button id="enabler" onclick="sendEnableRequest()">Aktivieren</button>
+    <button id="refresher" onclick="refreshList()">Aktualisieren</button>
+    <button id="showlogs" onclick="loadlogs()">Logs anzeigen</button>
+    <br>
+    <input class="websiteinput" id="input" type="text" placeholder="Please insert your Website"
+        onfocus="this.style.background='#f3e16b';" onblur="this.style.background='#ffffff';">
+    <button onclick="submitWebsite()" class="insertbutton" tabindex="1">Eintragen</button>
+    <div id="activatemessage" class="message"></div>
+    <div id="logdiv" class="tabletext"></div>
+
+</body>
+
+<script src="main.js">
+</script>
+
+</html>
