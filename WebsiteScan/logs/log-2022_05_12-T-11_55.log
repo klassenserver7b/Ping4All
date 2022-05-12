@@ -1,0 +1,43 @@
+12.05.2022-11:55:27 main                                          DBLOG           Connecting to database
+12.05.2022-11:55:29 loop                                          Main            Websiteupdate requested
+12.05.2022-11:55:29 loop                                          Main            Successfully updated 4 websites
+12.05.2022-11:55:29 loop                                          Main            Pingrequest requested
+12.05.2022-11:55:35 HTTP-Dispatcher                               Main            Successfully updated 4 websites
+12.05.2022-11:56:00 loop                                          Main            Pingrequest requested
+12.05.2022-11:56:30 loop                                          Main            Pingrequest requested
+12.05.2022-11:56:31 loop                                          Main            Pingrequest requested
+12.05.2022-11:57:02 loop                                          Main            Pingrequest requested
+12.05.2022-11:57:13 HTTP-Dispatcher                               Main            Successfully updated 4 websites
+12.05.2022-11:57:32 loop                                          Main            Pingrequest requested
+12.05.2022-11:57:33 loop                                          Main            Pingrequest requested
+12.05.2022-11:58:03 loop                                          Main            Pingrequest requested
+12.05.2022-11:58:10 HTTP-Dispatcher                               Main            Successfully updated 4 websites
+12.05.2022-11:58:33 loop                                          Main            Pingrequest requested
+12.05.2022-11:58:34 HTTP-Dispatcher                               Main            Successfully updated 4 websites
+12.05.2022-11:58:35 loop                                          Main            Pingrequest requested
+12.05.2022-11:59:05 loop                                          Main            Pingrequest requested
+12.05.2022-11:59:35 loop                                          Main            Pingrequest requested
+12.05.2022-11:59:37 loop                                          Main            Pingrequest requested
+12.05.2022-11:59:37 HTTP-Dispatcher                               Main            Successfully updated 3 websites
+12.05.2022-11:59:48 HTTP-Dispatcher                               Main            Successfully updated 4 websites
+12.05.2022-11:59:48 HTTP-Dispatcher                               Main            Successfully updated 4 websites
+12.05.2022-11:59:51 HTTP-Dispatcher                               Main            Successfully updated 4 websites
+12.05.2022-11:59:52 HTTP-Dispatcher                               Main            Successfully updated 4 websites
+12.05.2022-11:59:52 HTTP-Dispatcher                               Main            Successfully updated 4 websites
+12.05.2022-11:59:52 HTTP-Dispatcher                               Main            Successfully updated 4 websites
+12.05.2022-12:00:07 loop                                          Main            Pingrequest requested
+12.05.2022-12:00:11 HTTP-Dispatcher                               Main            Successfully updated 4 websites
+12.05.2022-12:00:17 HTTP-Dispatcher                               Main            Successfully updated 4 websites
+12.05.2022-12:00:17 HTTP-Dispatcher                               Main            Successfully updated 4 websites
+12.05.2022-12:00:17 HTTP-Dispatcher                               Main            Successfully updated 4 websites
+12.05.2022-12:00:17 HTTP-Dispatcher                               Main            Successfully updated 4 websites
+12.05.2022-12:00:17 HTTP-Dispatcher                               Main            Successfully updated 4 websites
+12.05.2022-12:00:17 HTTP-Dispatcher                               Main            Successfully updated 4 websites
+12.05.2022-12:00:17 HTTP-Dispatcher                               Main            Successfully updated 4 websites
+12.05.2022-12:00:17 HTTP-Dispatcher                               Main            Successfully updated 4 websites
+12.05.2022-12:00:17 HTTP-Dispatcher                               Main            Successfully updated 4 websites
+12.05.2022-12:00:17 HTTP-Dispatcher                               Main            Successfully updated 4 websites
+12.05.2022-12:00:37 loop                                          Main            Pingrequest requested
+12.05.2022-12:00:38 loop                                          Main            Pingrequest requested
+12.05.2022-12:01:08 loop                                          Main            Pingrequest requested
+12.05.2022-12:01:25 HTTP-Dispatcher                               Main            Successfully updated 4 websites

@@ -1,0 +1,82 @@
+10.05.2022-14:39:18 main                                          DBLOG           Connecting to database
+10.05.2022-14:39:19 main                                          Main            Webserver started
+10.05.2022-14:39:20 loop                                          Main            Websiteupdate requested
+10.05.2022-14:39:20 loop                                          Main            Successfully updated 3 websites
+10.05.2022-14:39:20 loop                                          Main            Pingrequest requested
+10.05.2022-14:39:50 loop                                          Main            Pingrequest requested
+10.05.2022-14:40:21 loop                                          Main            Pingrequest requested
+10.05.2022-14:40:26 loop                                          Main            Pingrequest requested
+10.05.2022-14:40:56 loop                                          Main            Pingrequest requested
+10.05.2022-14:41:24 HTTP-worker-1                                 Main            java.net.SocketTimeoutException: Read timed out
+10.05.2022-14:41:26 loop                                          Main            Pingrequest requested
+10.05.2022-14:41:27 loop                                          Main            Pingrequest requested
+10.05.2022-14:41:57 loop                                          Main            Pingrequest requested
+10.05.2022-14:42:27 loop                                          Main            Pingrequest requested
+10.05.2022-14:42:28 loop                                          Main            Pingrequest requested
+10.05.2022-14:42:58 loop                                          Main            Pingrequest requested
+10.05.2022-14:43:28 loop                                          Main            Pingrequest requested
+10.05.2022-14:43:29 loop                                          Main            Pingrequest requested
+10.05.2022-14:43:59 loop                                          Main            Pingrequest requested
+10.05.2022-14:44:30 loop                                          Main            Pingrequest requested
+10.05.2022-14:44:31 loop                                          Main            Pingrequest requested
+10.05.2022-14:45:01 loop                                          Main            Pingrequest requested
+10.05.2022-14:45:31 loop                                          Main            Pingrequest requested
+10.05.2022-14:45:32 loop                                          Main            Pingrequest requested
+10.05.2022-14:46:02 loop                                          Main            Pingrequest requested
+10.05.2022-14:46:17 HTTP-worker-2                                 Main            org.apache.http.ConnectionClosedException: Client closed connection
+10.05.2022-14:46:32 loop                                          Main            Pingrequest requested
+10.05.2022-14:46:33 loop                                          Main            Pingrequest requested
+10.05.2022-14:46:45 HTTP-worker-3                                 Main            org.apache.http.ConnectionClosedException: Client closed connection
+10.05.2022-14:47:03 loop                                          Main            Pingrequest requested
+10.05.2022-14:47:34 loop                                          Main            Pingrequest requested
+10.05.2022-14:47:35 loop                                          Main            Pingrequest requested
+10.05.2022-14:47:47 HTTP-worker-4                                 Main            org.apache.http.ConnectionClosedException: Client closed connection
+10.05.2022-14:48:05 loop                                          Main            Pingrequest requested
+10.05.2022-14:48:23 HTTP-worker-5                                 Main            org.apache.http.ConnectionClosedException: Client closed connection
+10.05.2022-14:48:35 loop                                          Main            Pingrequest requested
+10.05.2022-14:48:36 loop                                          Main            Pingrequest requested
+10.05.2022-14:48:41 HTTP-worker-6                                 Main            org.apache.http.ConnectionClosedException: Client closed connection
+10.05.2022-14:49:06 loop                                          Main            Pingrequest requested
+10.05.2022-14:49:36 loop                                          Main            Pingrequest requested
+10.05.2022-14:49:37 loop                                          Main            Pingrequest requested
+10.05.2022-14:50:07 loop                                          Main            Pingrequest requested
+10.05.2022-14:50:11 HTTP-worker-7                                 Main            java.net.SocketTimeoutException: Read timed out
+10.05.2022-14:50:30 HTTP-worker-8                                 Main            java.net.SocketTimeoutException: Read timed out
+10.05.2022-14:50:37 loop                                          Main            Pingrequest requested
+10.05.2022-14:50:38 loop                                          Main            Pingrequest requested
+10.05.2022-14:50:54 HTTP-worker-9                                 Main            java.net.SocketTimeoutException: Read timed out
+10.05.2022-14:51:05 HTTP-worker-10                                Main            java.net.SocketTimeoutException: Read timed out
+10.05.2022-14:51:08 loop                                          Main            Pingrequest requested
+10.05.2022-14:51:38 loop                                          Main            Pingrequest requested
+10.05.2022-14:51:39 loop                                          Main            Pingrequest requested
+10.05.2022-14:52:09 loop                                          Main            Pingrequest requested
+10.05.2022-14:52:39 loop                                          Main            Pingrequest requested
+10.05.2022-14:52:40 loop                                          Main            Pingrequest requested
+10.05.2022-14:53:10 loop                                          Main            Pingrequest requested
+10.05.2022-14:53:40 loop                                          Main            Pingrequest requested
+10.05.2022-14:53:41 loop                                          Main            Pingrequest requested
+10.05.2022-14:54:11 loop                                          Main            Pingrequest requested
+10.05.2022-14:54:42 loop                                          Main            Pingrequest requested
+10.05.2022-14:54:43 loop                                          Main            Pingrequest requested
+10.05.2022-14:55:13 loop                                          Main            Pingrequest requested
+10.05.2022-14:55:43 loop                                          Main            Pingrequest requested
+10.05.2022-14:55:44 loop                                          Main            Pingrequest requested
+10.05.2022-14:55:57 HTTP-worker-11                                Main            java.net.SocketTimeoutException: Read timed out
+10.05.2022-14:56:14 loop                                          Main            Pingrequest requested
+10.05.2022-14:56:44 loop                                          Main            Pingrequest requested
+10.05.2022-14:56:45 loop                                          Main            Pingrequest requested
+10.05.2022-14:57:15 loop                                          Main            Pingrequest requested
+10.05.2022-14:57:45 loop                                          Main            Pingrequest requested
+10.05.2022-14:57:46 loop                                          Main            Pingrequest requested
+10.05.2022-14:58:16 loop                                          Main            Pingrequest requested
+10.05.2022-14:58:47 loop                                          Main            Pingrequest requested
+10.05.2022-14:58:48 loop                                          Main            Pingrequest requested
+10.05.2022-14:59:18 loop                                          Main            Pingrequest requested
+10.05.2022-14:59:48 loop                                          Main            Pingrequest requested
+10.05.2022-14:59:49 loop                                          Main            Pingrequest requested
+10.05.2022-15:00:19 loop                                          Main            Pingrequest requested
+10.05.2022-15:00:49 loop                                          Main            Pingrequest requested
+10.05.2022-15:00:50 loop                                          Main            Pingrequest requested
+10.05.2022-15:01:20 loop                                          Main            Pingrequest requested
+10.05.2022-15:01:25 Shutdown                                      Main            Schutdown initiated
+10.05.2022-15:01:25 HTTP-listener-80-1                            Main            java.net.SocketException: Interrupted function call: accept failed

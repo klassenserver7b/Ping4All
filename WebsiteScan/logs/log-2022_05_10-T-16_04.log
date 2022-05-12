@@ -1,0 +1,27 @@
+10.05.2022-16:04:54 main                                          DBLOG           Connecting to database
+10.05.2022-16:04:54 main                                          Main            Webserver started
+10.05.2022-16:04:55 loop                                          Main            Websiteupdate requested
+10.05.2022-16:04:55 loop                                          Main            Successfully updated 3 websites
+10.05.2022-16:04:55 loop                                          Main            Pingrequest requested
+10.05.2022-16:05:26 loop                                          Main            Pingrequest requested
+10.05.2022-16:05:56 loop                                          Main            Pingrequest requested
+10.05.2022-16:05:57 loop                                          Main            Pingrequest requested
+10.05.2022-16:06:27 loop                                          Main            Pingrequest requested
+10.05.2022-16:06:57 loop                                          Main            Pingrequest requested
+10.05.2022-16:06:58 loop                                          Main            Pingrequest requested
+10.05.2022-16:07:28 loop                                          Main            Pingrequest requested
+10.05.2022-16:07:58 loop                                          Main            Pingrequest requested
+10.05.2022-16:07:59 loop                                          Main            Pingrequest requested
+10.05.2022-16:08:30 loop                                          Main            Pingrequest requested
+10.05.2022-16:09:00 loop                                          Main            Pingrequest requested
+10.05.2022-16:09:01 loop                                          Main            Pingrequest requested
+10.05.2022-16:09:31 loop                                          Main            Pingrequest requested
+10.05.2022-16:10:01 loop                                          Main            Pingrequest requested
+10.05.2022-16:10:02 loop                                          Main            Pingrequest requested
+10.05.2022-16:10:32 loop                                          Main            Pingrequest requested
+10.05.2022-16:11:02 loop                                          Main            Pingrequest requested
+10.05.2022-16:11:03 loop                                          Main            Pingrequest requested
+10.05.2022-16:11:33 loop                                          Main            Pingrequest requested
+10.05.2022-16:12:04 loop                                          Main            Pingrequest requested
+10.05.2022-16:12:05 loop                                          Main            Pingrequest requested
+10.05.2022-16:12:20 Shutdown                                      Main            Schutdown initiated

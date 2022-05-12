@@ -1,0 +1,16 @@
+11.05.2022-16:03:23 main                                          DBLOG           Connecting to database
+11.05.2022-16:03:24 loop                                          Main            Websiteupdate requested
+11.05.2022-16:03:24 loop                                          Main            Successfully updated 2 websites
+11.05.2022-16:03:24 loop                                          Main            Pingrequest requested
+11.05.2022-16:03:29 HTTP-Dispatcher                               Main            Successfully updated 3 websites
+11.05.2022-16:03:55 loop                                          Main            Pingrequest requested
+11.05.2022-16:04:25 loop                                          Main            Pingrequest requested
+11.05.2022-16:04:27 loop                                          Main            Pingrequest requested
+11.05.2022-16:04:57 loop                                          Main            Pingrequest requested
+11.05.2022-16:05:21 HTTP-Dispatcher                               Main            Successfully updated 2 websites
+11.05.2022-16:05:27 loop                                          Main            Pingrequest requested
+11.05.2022-16:05:28 loop                                          Main            Pingrequest requested
+11.05.2022-16:05:58 loop                                          Main            Pingrequest requested
+11.05.2022-16:06:05 HTTP-Dispatcher                               Main            Successfully updated 3 websites
+11.05.2022-16:06:29 loop                                          Main            Pingrequest requested
+11.05.2022-16:06:30 loop                                          Main            Pingrequest requested

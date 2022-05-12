@@ -1,0 +1,103 @@
+12.05.2022-12:12:35 main                                          DBLOG           Connecting to database
+12.05.2022-12:12:36 main                                          DBLOG           MySQL-Update requested - query: CREATE TABLE IF NOT EXISTS websites(website LONGTEXT, enabled BOOLEAN)
+12.05.2022-12:12:36 main                                          DBLOG           MySQL-Update requested - query: CREATE TABLE IF NOT EXISTS pinglogs(website LONGTEXT, timestamp DATETIME, success BOOLEAN, ping_errorcode LONGTEXT)
+12.05.2022-12:12:37 loop                                          Main            Websiteupdate requested
+12.05.2022-12:12:37 loop                                          DBLOG           MySQL-Query requested - query: SELECT * From websitescan.websites
+12.05.2022-12:12:37 loop                                          Main            Successfully updated 6 websites
+12.05.2022-12:12:37 loop                                          Main            Pingrequest requested
+12.05.2022-12:12:37 loop                                          Main            pinging https://lernsax.de
+12.05.2022-12:12:38 loop                                          Main            pinged https://lernsax.de - REQUEST SUCCESSFUL - ELAPSED TIME: 430ms
+12.05.2022-12:12:38 loop                                          Main            pinging https://3m5.de
+12.05.2022-12:12:38 loop                                          Main            pinged https://3m5.de - REQUEST SUCCESSFUL - ELAPSED TIME: 592ms
+12.05.2022-12:12:38 loop                                          Main            pinging https://www.amazon.de
+12.05.2022-12:12:38 loop                                          Main            pinged https://www.amazon.de - REQUEST SUCCESSFUL - ELAPSED TIME: 139ms
+12.05.2022-12:12:38 loop                                          Main            pinging http://bestellung.gourmetta.de
+12.05.2022-12:12:38 loop                                          Main            pinged http://bestellung.gourmetta.de - REQUEST SUCCESSFUL - ELAPSED TIME: 184ms
+12.05.2022-12:12:38 loop                                          Main            pinging http://google.com
+12.05.2022-12:12:39 loop                                          Main            pinged http://google.com - REQUEST SUCCESSFUL - ELAPSED TIME: 147ms
+12.05.2022-12:12:39 loop                                          Main            pinging http://lernsax.de
+12.05.2022-12:12:39 loop                                          Main            pinged http://lernsax.de - REQUEST SUCCESSFUL - ELAPSED TIME: 134ms
+12.05.2022-12:12:39 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('https://lernsax.de', '2022-05-12 12:12:39', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 430ms')
+12.05.2022-12:12:39 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('https://3m5.de', '2022-05-12 12:12:39', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 592ms')
+12.05.2022-12:12:39 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('https://www.amazon.de', '2022-05-12 12:12:39', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 139ms')
+12.05.2022-12:12:39 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('http://bestellung.gourmetta.de', '2022-05-12 12:12:39', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 184ms')
+12.05.2022-12:12:39 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('http://google.com', '2022-05-12 12:12:39', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 147ms')
+12.05.2022-12:12:39 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('http://lernsax.de', '2022-05-12 12:12:39', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 134ms')
+12.05.2022-12:13:06 HTTP-Dispatcher                               DBLOG           MySQL-Query requested - query: SELECT * From websitescan.websites
+12.05.2022-12:13:06 HTTP-Dispatcher                               Main            Successfully updated 6 websites
+12.05.2022-12:13:08 loop                                          Main            Pingrequest requested
+12.05.2022-12:13:08 loop                                          Main            pinging https://lernsax.de
+12.05.2022-12:13:08 loop                                          Main            pinged https://lernsax.de - REQUEST SUCCESSFUL - ELAPSED TIME: 169ms
+12.05.2022-12:13:08 loop                                          Main            pinging https://3m5.de
+12.05.2022-12:13:09 loop                                          Main            pinged https://3m5.de - REQUEST SUCCESSFUL - ELAPSED TIME: 586ms
+12.05.2022-12:13:09 loop                                          Main            pinging https://www.amazon.de
+12.05.2022-12:13:09 loop                                          Main            pinged https://www.amazon.de - REQUEST SUCCESSFUL - ELAPSED TIME: 95ms
+12.05.2022-12:13:09 loop                                          Main            pinging http://bestellung.gourmetta.de
+12.05.2022-12:13:09 loop                                          Main            pinged http://bestellung.gourmetta.de - REQUEST SUCCESSFUL - ELAPSED TIME: 167ms
+12.05.2022-12:13:09 loop                                          Main            pinging http://google.com
+12.05.2022-12:13:09 loop                                          Main            pinged http://google.com - REQUEST SUCCESSFUL - ELAPSED TIME: 169ms
+12.05.2022-12:13:09 loop                                          Main            pinging http://lernsax.de
+12.05.2022-12:13:09 loop                                          Main            pinged http://lernsax.de - REQUEST SUCCESSFUL - ELAPSED TIME: 117ms
+12.05.2022-12:13:09 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('https://lernsax.de', '2022-05-12 12:13:09', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 169ms')
+12.05.2022-12:13:09 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('https://3m5.de', '2022-05-12 12:13:09', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 586ms')
+12.05.2022-12:13:09 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('https://www.amazon.de', '2022-05-12 12:13:09', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 95ms')
+12.05.2022-12:13:09 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('http://bestellung.gourmetta.de', '2022-05-12 12:13:09', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 167ms')
+12.05.2022-12:13:09 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('http://google.com', '2022-05-12 12:13:09', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 169ms')
+12.05.2022-12:13:09 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('http://lernsax.de', '2022-05-12 12:13:09', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 117ms')
+12.05.2022-12:13:38 loop                                          Main            Pingrequest requested
+12.05.2022-12:13:38 loop                                          Main            pinging https://lernsax.de
+12.05.2022-12:13:39 loop                                          Main            pinged https://lernsax.de - REQUEST SUCCESSFUL - ELAPSED TIME: 195ms
+12.05.2022-12:13:39 loop                                          Main            pinging https://3m5.de
+12.05.2022-12:13:39 loop                                          Main            pinged https://3m5.de - REQUEST SUCCESSFUL - ELAPSED TIME: 599ms
+12.05.2022-12:13:39 loop                                          Main            pinging https://www.amazon.de
+12.05.2022-12:13:39 loop                                          Main            pinged https://www.amazon.de - REQUEST SUCCESSFUL - ELAPSED TIME: 135ms
+12.05.2022-12:13:39 loop                                          Main            pinging http://bestellung.gourmetta.de
+12.05.2022-12:13:39 loop                                          Main            pinged http://bestellung.gourmetta.de - REQUEST SUCCESSFUL - ELAPSED TIME: 156ms
+12.05.2022-12:13:39 loop                                          Main            pinging http://google.com
+12.05.2022-12:13:40 loop                                          Main            pinged http://google.com - REQUEST SUCCESSFUL - ELAPSED TIME: 163ms
+12.05.2022-12:13:40 loop                                          Main            pinging http://lernsax.de
+12.05.2022-12:13:40 loop                                          Main            pinged http://lernsax.de - REQUEST SUCCESSFUL - ELAPSED TIME: 117ms
+12.05.2022-12:13:40 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('https://lernsax.de', '2022-05-12 12:13:40', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 195ms')
+12.05.2022-12:13:40 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('https://3m5.de', '2022-05-12 12:13:40', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 599ms')
+12.05.2022-12:13:40 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('https://www.amazon.de', '2022-05-12 12:13:40', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 135ms')
+12.05.2022-12:13:40 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('http://bestellung.gourmetta.de', '2022-05-12 12:13:40', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 156ms')
+12.05.2022-12:13:40 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('http://google.com', '2022-05-12 12:13:40', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 163ms')
+12.05.2022-12:13:40 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('http://lernsax.de', '2022-05-12 12:13:40', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 117ms')
+12.05.2022-12:13:40 loop                                          Main            Pingrequest requested
+12.05.2022-12:13:40 loop                                          Main            pinging https://lernsax.de
+12.05.2022-12:13:40 loop                                          Main            pinged https://lernsax.de - REQUEST SUCCESSFUL - ELAPSED TIME: 177ms
+12.05.2022-12:13:40 loop                                          Main            pinging https://3m5.de
+12.05.2022-12:13:40 loop                                          Main            pinged https://3m5.de - REQUEST SUCCESSFUL - ELAPSED TIME: 516ms
+12.05.2022-12:13:40 loop                                          Main            pinging https://www.amazon.de
+12.05.2022-12:13:41 loop                                          Main            pinged https://www.amazon.de - REQUEST SUCCESSFUL - ELAPSED TIME: 123ms
+12.05.2022-12:13:41 loop                                          Main            pinging http://bestellung.gourmetta.de
+12.05.2022-12:13:41 loop                                          Main            pinged http://bestellung.gourmetta.de - REQUEST SUCCESSFUL - ELAPSED TIME: 131ms
+12.05.2022-12:13:41 loop                                          Main            pinging http://google.com
+12.05.2022-12:13:41 loop                                          Main            pinged http://google.com - REQUEST SUCCESSFUL - ELAPSED TIME: 143ms
+12.05.2022-12:13:41 loop                                          Main            pinging http://lernsax.de
+12.05.2022-12:13:41 loop                                          Main            pinged http://lernsax.de - REQUEST SUCCESSFUL - ELAPSED TIME: 126ms
+12.05.2022-12:13:41 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('https://lernsax.de', '2022-05-12 12:13:41', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 177ms')
+12.05.2022-12:13:41 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('https://3m5.de', '2022-05-12 12:13:41', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 516ms')
+12.05.2022-12:13:41 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('https://www.amazon.de', '2022-05-12 12:13:41', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 123ms')
+12.05.2022-12:13:41 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('http://bestellung.gourmetta.de', '2022-05-12 12:13:41', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 131ms')
+12.05.2022-12:13:41 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('http://google.com', '2022-05-12 12:13:41', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 143ms')
+12.05.2022-12:13:41 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('http://lernsax.de', '2022-05-12 12:13:41', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 126ms')
+12.05.2022-12:14:10 loop                                          Main            Pingrequest requested
+12.05.2022-12:14:10 loop                                          Main            pinging https://lernsax.de
+12.05.2022-12:14:10 loop                                          Main            pinged https://lernsax.de - REQUEST SUCCESSFUL - ELAPSED TIME: 185ms
+12.05.2022-12:14:10 loop                                          Main            pinging https://3m5.de
+12.05.2022-12:14:11 loop                                          Main            pinged https://3m5.de - REQUEST SUCCESSFUL - ELAPSED TIME: 579ms
+12.05.2022-12:14:11 loop                                          Main            pinging https://www.amazon.de
+12.05.2022-12:14:11 loop                                          Main            pinged https://www.amazon.de - REQUEST SUCCESSFUL - ELAPSED TIME: 154ms
+12.05.2022-12:14:11 loop                                          Main            pinging http://bestellung.gourmetta.de
+12.05.2022-12:14:11 loop                                          Main            pinged http://bestellung.gourmetta.de - REQUEST SUCCESSFUL - ELAPSED TIME: 204ms
+12.05.2022-12:14:11 loop                                          Main            pinging http://google.com
+12.05.2022-12:14:11 loop                                          Main            pinged http://google.com - REQUEST SUCCESSFUL - ELAPSED TIME: 128ms
+12.05.2022-12:14:11 loop                                          Main            pinging http://lernsax.de
+12.05.2022-12:14:11 loop                                          Main            pinged http://lernsax.de - REQUEST SUCCESSFUL - ELAPSED TIME: 100ms
+12.05.2022-12:14:11 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('https://lernsax.de', '2022-05-12 12:14:11', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 185ms')
+12.05.2022-12:14:11 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('https://3m5.de', '2022-05-12 12:14:11', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 579ms')
+12.05.2022-12:14:11 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('https://www.amazon.de', '2022-05-12 12:14:11', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 154ms')
+12.05.2022-12:14:11 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('http://bestellung.gourmetta.de', '2022-05-12 12:14:11', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 204ms')
+12.05.2022-12:14:11 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('http://google.com', '2022-05-12 12:14:11', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 128ms')
+12.05.2022-12:14:11 loop                                          DBLOG           MySQL-Update requested - query: INSERT INTO pinglogs(website,timestamp,success,ping_errorcode) VALUES('http://lernsax.de', '2022-05-12 12:14:11', true, 'REQUEST SUCCESSFUL - ELAPSED TIME: 100ms')
