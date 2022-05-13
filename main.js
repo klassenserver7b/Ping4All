@@ -20,7 +20,7 @@ function refreshList(causedBy) {
 
                     dict[site.url] = site.enabled
                     var optn = document.createElement("option");
-                    optn.className = "ddoption";
+                    optn.className = "col-lg";
                     optn.innerText = site.url;
                     optn.focus = "checkactivateButton()";
                     if (site.enabled == true) {
@@ -41,9 +41,9 @@ function refreshList(causedBy) {
                 })
                 if (count <= 1) {
                     list.size = 2
-                } else if(count>10){
+                } else if (count > 10) {
                     list.size = 10;
-                }else{
+                } else {
                     list.size = count;
                 }
             });
@@ -126,7 +126,7 @@ function startRemove() {
 
     var selectedremove = document.getElementById("websiteselect").value;
 
-    if (!(selectedremove == null || selectedremove =="")) {
+    if (!(selectedremove == null || selectedremove == "")) {
 
         if (window.confirm("Möchtest du wirklich \"" + selectedremove + "\" aus der Ping-Liste löschen?")) {
             removeWebsite();
@@ -139,7 +139,7 @@ function startRemove() {
         box.style.color = "red";
         select.style.borderStyle = "solid"
         select.style.borderColor = "#d91e18";
-        box.innerText = "Bitte wähle erst eine Website aus der Ping-Liste aus!";
+        box.innerText = "Bitte wähle zuerst eine Website aus der Liste aus!";
     }
 
 };
@@ -328,7 +328,7 @@ function loadlogs() {
                     table.id = "logs";
                     table.className = "logtable";
 
-                    var head = document.createElement("tr");
+                    var headrow = document.createElement("tr");
 
                     var namehead = document.createElement("td");
                     namehead.innerText = "Name der Website";
@@ -346,35 +346,38 @@ function loadlogs() {
                     loghead.innerText = "Log";
                     loghead.className = "logdata";
 
-                    head.appendChild(namehead);
-                    head.appendChild(timehead);
-                    head.appendChild(successhead);
-                    head.appendChild(loghead);
-                    table.appendChild(head);
+                    headrow.appendChild(namehead);
+                    headrow.appendChild(timehead);
+                    headrow.appendChild(successhead);
+                    headrow.appendChild(loghead);
+                    table.appendChild(headrow);
 
                     res.forEach(site => {
                         var row = document.createElement("tr");
 
                         var name = document.createElement("td");
                         name.innerText = site.name;
-                        name.className = "logdata";
+                        name.className = "logdata col-lg-2";
 
                         var time = document.createElement("td");
                         time.innerText = site.time;
-                        time.className = "logdata";
+                        time.className = "logdata col-lg-2";
 
                         var success = document.createElement("td");
                         success.innerText = site.success;
-                        success.className = "logdata";
+                        success.className = "logdata col-lg-1";
                         if (site.success == true) {
                             success.style.backgroundColor = "green";
                         } else {
                             success.style.backgroundColor = "red";
                         }
+                        success.datatoggle = "tooltip";
+                        success.dataplacement="bottom";
+                        success.title=site.log;
 
                         var log = document.createElement("td");
                         log.innerText = site.log;
-                        log.className = "logdata";
+                        log.className = "logdata col-lg-4";
 
                         row.appendChild(name);
                         row.appendChild(time);
