@@ -63,16 +63,20 @@ public class WebsiteUpdateHandler implements HttpHandler {
             String[] urlsplit = website.split("\\.");
 
             int l = urlsplit.length;
-
-            String sld = urlsplit[l-2];
             String name;
 
-            if(sld.startsWith("https://")){
-                name = upperCaseFirst(sld.substring(8));
-            }else if(sld.startsWith("http://")) {
-                name = upperCaseFirst(sld.substring(7));
+            if(l>=2) {
+                String sld = urlsplit[l - 2];
+
+                if (sld.startsWith("https://")) {
+                    name = upperCaseFirst(sld.substring(8));
+                } else if (sld.startsWith("http://")) {
+                    name = upperCaseFirst(sld.substring(7));
+                } else {
+                    name = sld;
+                }
             }else{
-                name = sld;
+                name = urlsplit[0];
             }
 
             JsonObject obj = new JsonObject();
