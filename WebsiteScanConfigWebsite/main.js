@@ -21,7 +21,7 @@ function refreshList(causedBy) {
                     dict[site.url] = site.enabled
                     var optn = document.createElement("option");
                     optn.className = "ddoption";
-                    optn.innerHTML = site.url;
+                    optn.innerText = site.url;
                     optn.focus = "checkactivateButton()";
                     if (site.enabled == true) {
                         optn.style.backgroundColor = "#93faa5";
@@ -41,7 +41,9 @@ function refreshList(causedBy) {
                 })
                 if (count <= 1) {
                     list.size = 2
-                } else {
+                } else if(count>10){
+                    list.size = 10;
+                }else{
                     list.size = count;
                 }
             });
@@ -95,19 +97,19 @@ function submitWebsite() {
 
                 box.style.color = "red";
 
-                result.text().then(body => box.innerHTML = body);
+                result.text().then(body => box.innerText = body);
                 document.getElementById("input").style.borderColor = "#d91e18";
 
             } else {
                 box.style.color = "red";
-                box.innerHTML = "Daten konnten nicht übermittelt werden! <br> bitte versuchen sie es später erneut";
+                box.innerText = "Daten konnten nicht übermittelt werden! <br> bitte versuchen sie es später erneut";
 
             }
 
         } else {
 
             box.style.color = "green";
-            box.innerHTML = "Website successfull added!";
+            box.innerText = "Website successfull added!";
             document.getElementById("input").value = "";
             document.getElementById("input").style.borderColor = "darkgrey";
 
@@ -124,7 +126,7 @@ function startRemove() {
 
     var selectedremove = document.getElementById("websiteselect").value;
 
-    if (selectedremove != null) {
+    if (!(selectedremove == null || selectedremove =="")) {
 
         if (window.confirm("Möchtest du wirklich \"" + selectedremove + "\" aus der Ping-Liste löschen?")) {
             removeWebsite();
@@ -137,7 +139,7 @@ function startRemove() {
         box.style.color = "red";
         select.style.borderStyle = "solid"
         select.style.borderColor = "#d91e18";
-        box.innerHTML = "Bitte wähle erst eine Website aus der Ping-Liste aus!";
+        box.innerText = "Bitte wähle erst eine Website aus der Ping-Liste aus!";
     }
 
 };
@@ -164,17 +166,17 @@ function removeWebsite() {
 
                 box.style.color = "red";
                 var message;
-                result.text().then(body => box.innerHTML = body);
+                result.text().then(body => box.innerText = body);
 
             } else {
                 box.style.color = "red";
-                box.innerHTML = "Daten konnten nicht übermittelt werden! <br> bitte versuchen sie es später erneut";
+                box.innerText = "Daten konnten nicht übermittelt werden! <br> bitte versuchen sie es später erneut";
 
             }
         } else {
 
             box.style.color = "green";
-            box.innerHTML = "Website successfull removed!";
+            box.innerText = "Website successfull removed!";
             var select = document.getElementById("websiteselect")
             select.style.borderColor = "green";
 
@@ -215,12 +217,12 @@ function changebuttonstyles() {
     var but = document.getElementById("enabler");
 
     if (but != null) {
-        but.innerHTML = "Deaktivieren";
+        but.innerText = "Deaktivieren";
         but.id = "disabler";
 
     } else {
         but = document.getElementById("disabler");
-        but.innerHTML = "Aktivieren";
+        but.innerText = "Aktivieren";
         but.id = "enabler";
     }
 
@@ -266,18 +268,18 @@ function sendEnableRequest() {
                         if (result.status == 400) {
 
                             box.style.color = "red";
-                            box.innerHTML = message;
+                            box.innerText = message;
 
                         } else {
 
                             box.style.color = "red";
-                            box.innerHTML = "Daten konnten nicht übermittelt werden! <br> bitte versuchen sie es später erneut";
+                            box.innerText = "Daten konnten nicht übermittelt werden! <br> bitte versuchen sie es später erneut";
 
                         }
                     } else {
 
                         box.style.color = "green";
-                        box.innerHTML = message;
+                        box.innerText = message;
                         var select = document.getElementById("websiteselect")
                         select.style.borderColor = "green";
 
@@ -295,7 +297,7 @@ function sendEnableRequest() {
         var box = document.getElementById("deactivateMessage");
         box.style.width = "200px";
         box.style.color = "red";
-        box.innerHTML = "Bitte wähle zuerst eine Website aus der Liste aus!";
+        box.innerText = "Bitte wähle zuerst eine Website aus der Liste aus!";
 
     }
 
@@ -329,19 +331,19 @@ function loadlogs() {
                     var head = document.createElement("tr");
 
                     var namehead = document.createElement("td");
-                    namehead.innerHTML = "Name der Website";
+                    namehead.innerText = "Name der Website";
                     namehead.className = "logdata";
 
                     var timehead = document.createElement("td");
-                    timehead.innerHTML = "Zeitstempel";
+                    timehead.innerText = "Zeitstempel";
                     timehead.className = "logdata";
 
                     var successhead = document.createElement("td");
-                    successhead.innerHTML = "Erfolgreich?";
+                    successhead.innerText = "Erfolgreich?";
                     successhead.className = "logdata";
 
                     var loghead = document.createElement("td");
-                    loghead.innerHTML = "Log";
+                    loghead.innerText = "Log";
                     loghead.className = "logdata";
 
                     head.appendChild(namehead);
@@ -354,15 +356,15 @@ function loadlogs() {
                         var row = document.createElement("tr");
 
                         var name = document.createElement("td");
-                        name.innerHTML = site.name;
+                        name.innerText = site.name;
                         name.className = "logdata";
 
                         var time = document.createElement("td");
-                        time.innerHTML = site.time;
+                        time.innerText = site.time;
                         time.className = "logdata";
 
                         var success = document.createElement("td");
-                        success.innerHTML = site.success;
+                        success.innerText = site.success;
                         success.className = "logdata";
                         if (site.success == true) {
                             success.style.backgroundColor = "green";
@@ -371,7 +373,7 @@ function loadlogs() {
                         }
 
                         var log = document.createElement("td");
-                        log.innerHTML = site.log;
+                        log.innerText = site.log;
                         log.className = "logdata";
 
                         row.appendChild(name);
@@ -403,11 +405,11 @@ function loadlogs() {
                     box.style.fontSize = "15";
                     box.style.borderStyle = "solid";
                     box.style.borderColor = "red";
-                    result.text().then(body => box.innerHTML = body);
+                    result.text().then(body => box.innerText = body);
 
                 } else {
                     box.style.color = "red";
-                    box.innerHTML = "Daten konnten nicht übermittelt werden! <br> bitte versuchen sie es später erneut";
+                    box.innerText = "Daten konnten nicht übermittelt werden! <br> bitte versuchen sie es später erneut";
 
                 }
 
@@ -423,7 +425,7 @@ function loadlogs() {
         box.style.marginTop = "5px"
         box.style.fontSize = "15"
         document.getElementById("websiteselect").style.borderColor = "red";
-        box.innerHTML = "Bitte wähle zuerst eine Website aus der Liste aus!";
+        box.innerText = "Bitte wähle zuerst eine Website aus der Liste aus!";
 
     }
 
