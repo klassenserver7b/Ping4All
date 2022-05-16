@@ -3,10 +3,7 @@ var dict = {};
 function refreshList(causedBy) {
     var url = "http://127.0.0.1:80/updateWebsiteList";
 
-    fetch(url, {
-        method: "POST",
-        body: causedBy
-    }).then(result => {
+    fetch(url).then(result => {
 
         if (result.status == 200) {
             var list = document.getElementById("websiteselect");

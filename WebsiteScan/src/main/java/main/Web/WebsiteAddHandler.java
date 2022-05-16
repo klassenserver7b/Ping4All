@@ -53,7 +53,6 @@ public class WebsiteAddHandler implements HttpHandler {
         String response;
         try {
             if (Validator.isValidURL(website)) {
-
                 ResultSet set = MySql.onQuery("Select website FROM websites");
                 boolean alreadylisted = false;
 
