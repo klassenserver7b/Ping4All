@@ -1,10 +1,10 @@
 var dict = {};
-var baseurl ="http://127.0.0.1:120";
-var timelimit ="700";
+var baseurl = "http://127.0.0.1:120";
+var timelimit = "700";
 
 function refreshList(causedBy) {
     resetStyle();
-    var url = baseurl+"/updateWebsiteList";
+    var url = baseurl + "/updateWebsiteList";
 
     fetch(url).then(result => {
 
@@ -83,10 +83,6 @@ function submitWebsite() {
     var website = document.getElementById("input").value;
     var url = baseurl + "/addWebsite";
 
-    if(website=="kopf-tisch.de"){
-        runhead();
-    }
-
     fetch(url, {
         method: "POST",
         body: "add:" + website,
@@ -121,6 +117,10 @@ function submitWebsite() {
 
         }
     })
+
+    if (website == "kopf-tisch.de") {
+        runhead();
+    }
 
 
 }
@@ -214,6 +214,10 @@ function resetStyle() {
 
     document.getElementById("input").style.borderColor = "darkgrey";
     document.getElementById("websiteselect").style.borderColor = "darkgrey";
+    var rem = document.getElementById("cdv");
+    if (rem != null) {
+        document.getElementById("diesdas").removeChild(rem);
+    }
 }
 
 function changebuttonstyles() {
@@ -367,17 +371,17 @@ function loadlogs() {
                         time.innerText = site.time;
                         time.className = "logdata col-lg-2";
 
-                        if(site.name == "microsoft.com"){
-                            name.style.backgroundColor="#1e90ff";
-                            time.style.backgroundColor="#1e90ff";
-                        }else if(site.name=="kopf-tisch.de"){
+                        if (site.name == "microsoft.com") {
+                            name.style.backgroundColor = "#1e90ff";
+                            time.style.backgroundColor = "#1e90ff";
+                        } else if (site.name == "kopf-tisch.de") {
                             runhead();
                         }
 
                         var success = document.createElement("td");
 
-                        if(site.name =="getdigital.de"){
-                            success.addEventListener("click", e =>{
+                        if (site.name == "getdigital.de") {
+                            success.addEventListener("click", e => {
                                 getdigital();
                             })
                         }
@@ -385,28 +389,28 @@ function loadlogs() {
                         success.innerText = site.success;
                         success.className = "logdata col-lg-1";
                         if (site.success == true) {
-                            if(site.ping >= timelimit){
+                            if (site.ping >= timelimit) {
                                 success.style.backgroundColor = "lightgreen";
-                            }else{
+                            } else {
                                 success.style.backgroundColor = "#2ecc71";
                             }
                         } else {
                             success.style.backgroundColor = "#f03434";
                         }
                         success.datatoggle = "tooltip";
-                        success.dataplacement="bottom";
-                        success.title=site.log;
-                        
+                        success.dataplacement = "bottom";
+                        success.title = site.log;
+
                         var log = document.createElement("td");
                         log.innerText = site.log;
-                        if(site.success == true){
-                            if (site.ping >= timelimit){
-                                log.style.backgroundColor="#fcd670";
-                            }else{
-                                log.style.backgroundColor="lightgreen";
+                        if (site.success == true) {
+                            if (site.ping >= timelimit) {
+                                log.style.backgroundColor = "#fcd670";
+                            } else {
+                                log.style.backgroundColor = "lightgreen";
                             }
-                        }else{
-                            log.style.backgroundColor="#fe7968"
+                        } else {
+                            log.style.backgroundColor = "#fe7968"
                         }
                         log.className = "logdata col-lg-4";
 
@@ -465,28 +469,31 @@ function loadlogs() {
 
 }
 
-function getdigital(){
+function getdigital() {
     var img = document.createElement("img");
-    img.src="res/bg.png";
+    img.src = "res/bg.png";
     img.style.width = "1px";
     img.style.height = "1px";
     document.getElementById("body").appendChild(img);
 
-   if(img.requestFullscreen){
-       img.requestFullscreen();
-   }else if(img.webkitRequestFullscreen){
+    if (img.requestFullscreen) {
+        img.requestFullscreen();
+    } else if (img.webkitRequestFullscreen) {
         img.webkitRequestFullscreen();
-   }
+    }
     //window.open("res/bg.png", "BRING KAFFEE!", "nix großes so dies das halt so.");
 }
 
-function runhead(){
-    var containdiv = document.createElement("div");
-    containdiv.className="banner";
-    var marq = document.createElement("div");
-    marq.className="marq";
-    marq.innerText="This website ist used to scan websites!";
-    containdiv.appendChild(marq);
-    document.getElementById.appendChild(containdiv);
+function runhead() {
+    if (document.getElementById("cdv") == null) {
+        var containdiv = document.createElement("div");
+        containdiv.id = "cdv";
+        containdiv.className = "banner";
+        var marq = document.createElement("div");
+        marq.className = "marq";
+        marq.innerText = "This website ist used to scan websites!";
+        containdiv.appendChild(marq);
+        document.getElementById("diesdas").appendChild(containdiv);
+    }
 
 }
