@@ -1,4 +1,5 @@
-.\WebsiteScan\logs
-.\WebsiteScan\out
-.\WebsiteScan\target
-.\WebsiteScan\utilities
+WebsiteScan/logs/*
+WebsiteScan/out/*
+WebsiteScan/target/*
+WebsiteScan/utilities/*
+WebsiteScan/*
