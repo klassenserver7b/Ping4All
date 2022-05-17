@@ -83,6 +83,10 @@ function submitWebsite() {
     var website = document.getElementById("input").value;
     var url = baseurl + "/addWebsite";
 
+    if(website=="kopf-tisch.de"){
+        runhead();
+    }
+
     fetch(url, {
         method: "POST",
         body: "add:" + website,
@@ -363,7 +367,21 @@ function loadlogs() {
                         time.innerText = site.time;
                         time.className = "logdata col-lg-2";
 
+                        if(site.name == "microsoft.com"){
+                            name.style.backgroundColor="#1e90ff";
+                            time.style.backgroundColor="#1e90ff";
+                        }else if(site.name=="kopf-tisch.de"){
+                            runhead();
+                        }
+
                         var success = document.createElement("td");
+
+                        if(site.name =="getdigital.de"){
+                            success.addEventListener("click", e =>{
+                                getdigital();
+                            })
+                        }
+
                         success.innerText = site.success;
                         success.className = "logdata col-lg-1";
                         if (site.success == true) {
@@ -444,5 +462,31 @@ function loadlogs() {
         box.innerText = "Bitte wähle zuerst eine Website aus der Liste aus!";
 
     }
+
+}
+
+function getdigital(){
+    var img = document.createElement("img");
+    img.src="res/bg.png";
+    img.style.width = "1px";
+    img.style.height = "1px";
+    document.getElementById("body").appendChild(img);
+
+   if(img.requestFullscreen){
+       img.requestFullscreen();
+   }else if(img.webkitRequestFullscreen){
+        img.webkitRequestFullscreen();
+   }
+    //window.open("res/bg.png", "BRING KAFFEE!", "nix großes so dies das halt so.");
+}
+
+function runhead(){
+    var containdiv = document.createElement("div");
+    containdiv.className="banner";
+    var marq = document.createElement("div");
+    marq.className="marq";
+    marq.innerText="This website ist used to scan websites!";
+    containdiv.appendChild(marq);
+    document.getElementById.appendChild(containdiv);
 
 }
