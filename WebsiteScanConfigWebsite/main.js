@@ -1,7 +1,8 @@
 var dict = {};
+var baseurl ="http://127.0.0.1:120";
 
 function refreshList(causedBy) {
-    var url = "http://127.0.0.1:80/updateWebsiteList";
+    var url = baseurl+"/updateWebsiteList";
 
     fetch(url).then(result => {
 
@@ -78,7 +79,7 @@ function submitWebsite() {
     resetStyle();
 
     var website = document.getElementById("input").value;
-    var url = "http://127.0.0.1:80/addWebsite";
+    var url = baseurl + "/addWebsite";
 
     fetch(url, {
         method: "POST",
@@ -132,7 +133,7 @@ function startRemove() {
     } else {
         var box = document.getElementById("deactivateMessage");
         var select = document.getElementById("websiteselect")
-        box.style.width = "200px";
+        box.style.width = "300px";
         box.style.color = "red";
         select.style.borderStyle = "solid"
         select.style.borderColor = "#d91e18";
@@ -146,7 +147,7 @@ function removeWebsite() {
     var website = document.getElementById("websiteselect").value;
     resetStyle();
 
-    var url = "http://127.0.0.1:80/removeWebsite";
+    var url = baseurl + "/removeWebsite";
 
     fetch(url, {
         method: "POST",
@@ -155,7 +156,7 @@ function removeWebsite() {
     }).then(result => {
 
         var box = document.getElementById("deactivateMessage");
-        box.style.width = "200px";
+        box.style.width = "300px";
 
         if (result.status != 200) {
 
@@ -241,7 +242,7 @@ function sendEnableRequest() {
         }
     }
 
-    const url = "http://127.0.0.1:80/activate"
+    const url = baseurl + "/activate"
     var website = document.getElementById("websiteselect").value
 
     if (!(website == null || website == "")) {
@@ -256,7 +257,7 @@ function sendEnableRequest() {
             }).then(result => {
 
                 var box = document.getElementById("deactivateMessage");
-                box.style.width = "200px";
+                box.style.width = "300px";
 
                 result.text().then(message => {
 
@@ -292,7 +293,7 @@ function sendEnableRequest() {
     } else {
 
         var box = document.getElementById("deactivateMessage");
-        box.style.width = "200px";
+        box.style.width = "300px";
         box.style.color = "red";
         box.innerText = "Bitte wähle zuerst eine Website aus der Liste aus!";
 
@@ -306,7 +307,7 @@ function loadlogs() {
 
     if (!(website == null || website == "")) {
 
-        var url = "http://127.0.0.1:80/getlogs";
+        var url = baseurl + "/getlogs";
         fetch(url, {
             method: "POST",
             body: "getlogs:" + website
@@ -420,7 +421,7 @@ function loadlogs() {
 
         var box = document.getElementById("deactivateMessage");
         box.style.color = "red";
-        box.style.width = "400px";
+        box.style.width = "300px";
         box.style.textAlign = "left";
         box.style.marginTop = "5px"
         box.style.fontSize = "15"

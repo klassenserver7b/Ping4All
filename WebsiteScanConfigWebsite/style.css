@@ -10,17 +10,11 @@
 .websiteinput {
 
     margin-top: 5px;
-    min-width: 235px;
+    min-width: 315px;
+    min-height: 40px;
     border-radius: 6px;
     border-style: solid;
     border-color: darkgrey;
-
-}
-
-.insertbutton{
-
-margin-top: 5px;
-margin-left: 0px;
 
 }
 
