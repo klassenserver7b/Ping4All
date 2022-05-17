@@ -70,10 +70,11 @@ public class Ping {
             StringboolBuffer buff = request.get(key);
 
             try {
-                MySql.onUpdate("INSERT INTO pinglogs(website,timestamp,success,ping_errorcode)" +
+                MySql.onUpdate("INSERT INTO pinglogs(website,timestamp,success,ping,ping_errorcode)" +
                         " VALUES('" + key + "', '"
                         + time + "', "
-                        + buff.getBoolean() + ", '"
+                        + buff.getBoolean() + ", "
+                        + buff.getElapsedtime()+", '"
                         + buff.getString() + "')");
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -105,6 +106,7 @@ public class Ping {
             } else {
                 buff.setBool(true);
                 buff.setString("REQUEST SUCCESSFUL - ELAPSED TIME: " + elapsedtime + "ms");
+                buff.setTime(elapsedtime);
             }
             return buff;
 

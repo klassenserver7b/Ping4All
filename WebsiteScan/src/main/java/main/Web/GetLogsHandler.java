@@ -63,6 +63,7 @@ public class GetLogsHandler implements HttpHandler {
                         obj.addProperty("time", data.getString("timestamp"));
                         obj.addProperty("name", data.getString("website").replaceAll("http://", "").replaceAll("https://", ""));
                         obj.addProperty("success", data.getBoolean("success"));
+                        obj.addProperty("ping", data.getInt("ping"));
                         obj.addProperty("log", data.getString("ping_errorcode"));
 
                         logs.add(obj);

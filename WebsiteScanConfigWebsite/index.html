@@ -19,26 +19,25 @@
 
             <div class="col-lg">
                 <h2>Websiteliste</h2>
-                <select id="websiteselect" class="dropdown col-lg" size=2>
+                <select id="websiteselect" class="dropdown col-lg-4" size=2>
                 </select>
                 <br>
                 <div id="deactivateMessage" class="message"></div>
-                <br>
                 <button id="websiteremove" class="btn btn-danger" onclick="startRemove()">Entfernen</button>
                 <button id="enabler" class="btn btn-primary" onclick="sendEnableRequest()">Aktivieren</button>
-                <button id="refresher" class = "btn btn-secondary" onclick="refreshList()">Aktualisieren</button>
+                <button id="refresher" class="btn btn-secondary" onclick="refreshList()">Aktualisieren</button>
                 <button id="showlogs" class="btn btn-info" onclick="loadlogs()">Logs anzeigen</button>
                 <br>
-                <input class="websiteinput" id="input" type="text" data-toggle="tooltip" data-placement="bottom" title="Gib hier die Website die du hinzufügen möchtest ein" placeholder="Please insert your Website"
+                <input class="websiteinput" id="input" type="text" data-toggle="tooltip" data-placement="bottom"
+                    title="Gib hier die Website die du hinzufügen möchtest ein" placeholder="Please insert your Website"
                     onfocus="this.style.background='#f3e16b';" onblur="this.style.background='#ffffff';">
-                <button onclick="submitWebsite()" class="btn btn-success" tabindex="1">Eintragen</button>
+
+                <button onclick="submitWebsite()" class="btn btn-success submitbutton" tabindex="1">Eintragen</button>
+
                 <div id="activatemessage" class="message"></div>
             </div>
             <div class="col-lg-6">
-
-
                 <div id="logdiv" class="tabletext"></div>
-
             </div>
 
         </div>

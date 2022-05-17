@@ -9,7 +9,7 @@ public class Webserver {
 
 
     public static HttpServer server;
-    public static final int HTTP_PORT = 80;
+    public static final int HTTP_PORT = 120;
 
     public static void runServer() throws IOException {
 
