@@ -1,3 +1,9 @@
+.body {
+
+    background-image: url("res/bg.png");
+
+}
+
 .message {
 
     margin-top: 5px;
@@ -49,8 +55,36 @@
 
 }
 
-.submitbutton{
+.submitbutton {
 
     margin-top: -4px;
 
+}
+
+.banner {
+
+    background-color: #00b5cc;
+
+}
+
+.marq {
+    font-size: 20px;
+    font-family: sans-serif;
+    animation: marquee 10s linear infinite;
+}
+
+.container-fluid{
+
+    margin-top: 20px;
+
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
 }
