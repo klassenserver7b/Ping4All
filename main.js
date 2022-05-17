@@ -1,7 +1,9 @@
 var dict = {};
 var baseurl ="http://127.0.0.1:120";
+var timelimit ="700";
 
 function refreshList(causedBy) {
+    resetStyle();
     var url = baseurl+"/updateWebsiteList";
 
     fetch(url).then(result => {
@@ -365,16 +367,29 @@ function loadlogs() {
                         success.innerText = site.success;
                         success.className = "logdata col-lg-1";
                         if (site.success == true) {
-                            success.style.backgroundColor = "green";
+                            if(site.ping >= timelimit){
+                                success.style.backgroundColor = "lightgreen";
+                            }else{
+                                success.style.backgroundColor = "#2ecc71";
+                            }
                         } else {
-                            success.style.backgroundColor = "red";
+                            success.style.backgroundColor = "#f03434";
                         }
                         success.datatoggle = "tooltip";
                         success.dataplacement="bottom";
                         success.title=site.log;
-
+                        
                         var log = document.createElement("td");
                         log.innerText = site.log;
+                        if(site.success == true){
+                            if (site.ping >= timelimit){
+                                log.style.backgroundColor="#fcd670";
+                            }else{
+                                log.style.backgroundColor="lightgreen";
+                            }
+                        }else{
+                            log.style.backgroundColor="#fe7968"
+                        }
                         log.className = "logdata col-lg-4";
 
                         row.appendChild(name);
