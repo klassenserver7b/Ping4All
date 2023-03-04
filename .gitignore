@@ -2,4 +2,8 @@ WebsiteScan/logs/*
 WebsiteScan/out/*
 WebsiteScan/target/*
 WebsiteScan/utilities/*
-WebsiteScan/*
+mysql-8.0.30-winx64/*
+.git/*
+.idea/*
+logs/*
+/WebsiteScan/WebsiteScan.iml

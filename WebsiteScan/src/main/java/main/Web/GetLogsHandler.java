@@ -4,9 +4,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
-import main.Main;
 import main.util.MySql;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,101 +18,79 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GetLogsHandler implements HttpHandler {
-    private final Logger log = Main.INSTANCE.getMainLogger();
+public class GetLogsHandler extends GenericHandler implements HttpHandler {
+	private final Logger log;
 
-    @Override
-    public void handle(HttpExchange exchange) throws IOException {
+	public GetLogsHandler() {
+		super();
+		log = LoggerFactory.getLogger(getClass());
+	}
 
-        BufferedReader read = new BufferedReader(new InputStreamReader(exchange.getRequestBody()));
-        OutputStream os = exchange.getResponseBody();
-        String website = read.readLine();
-        read.close();
+	@Override
+	public void handle(HttpExchange exchange) throws IOException {
 
-        website = website.replaceAll("getlogs:", "");
+		BufferedReader read = new BufferedReader(new InputStreamReader(exchange.getRequestBody()));
+		OutputStream os = exchange.getResponseBody();
+		String website = read.readLine();
+		read.close();
 
-        exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
+		website = website.replaceAll("getlogs:", "");
 
-        if (exchange.getRequestMethod().equalsIgnoreCase("OPTIONS")) {
+		exchange = super.sendCors(exchange);
+		if (exchange == null) {
+			return;
+		}
+		getLogs(exchange, os, website);
+	}
 
-            log.debug("OPTIONS request accepted - returning CORS allow");
-            exchange.getResponseHeaders().add("Access-Control-Allow-Methods", "GET, POST, OPTIONS, HEAD");
-            exchange.getResponseHeaders().add("Access-Control-Allow-Headers", "Content-Type,Authorization");
-            exchange.sendResponseHeaders(204, -1);
+	public void getLogs(HttpExchange exchange, OutputStream os, String website) {
+		if (!(website == null || website.equalsIgnoreCase(""))) {
+			List<JsonObject> logs = new ArrayList<>();
+			JsonArray response = new JsonArray();
 
-            return;
-        }
+			try (ResultSet data = MySql.onQuery("SELECT * FROM pinglogs WHERE website = ?", website)) {
 
-        getLogs(exchange, os, website);
-    }
+				if (data != null) {
+					int i = 0;
+					while (data.next()) {
+						JsonObject obj = new JsonObject();
+						obj.addProperty("id", i);
+						obj.addProperty("time", data.getString("timestamp"));
+						obj.addProperty("name",
+								data.getString("website").replaceAll("http://", "").replaceAll("https://", ""));
+						obj.addProperty("success", data.getBoolean("success"));
+						obj.addProperty("ping", data.getInt("ping"));
+						obj.addProperty("log", data.getString("ping_errorcode"));
 
-    public void getLogs(HttpExchange exchange, OutputStream os, String website) {
-        if (!(website == null || website.equalsIgnoreCase(""))) {
-            List<JsonObject> logs = new ArrayList<>();
-            JsonArray response = new JsonArray();
+						logs.add(obj);
+						i++;
+					}
 
-            try {
+					for (int j = logs.size() - 1; j >= 0; j--) {
+						response.add(logs.get(j));
+					}
 
-                ResultSet data = MySql.onQuery("SELECT * FROM pinglogs WHERE website = '" + website + "'");
+					super.sendResponse(exchange, os, response);
 
-                if (data != null) {
-                    int i = 0;
-                    while (data.next()) {
-                        JsonObject obj = new JsonObject();
-                        obj.addProperty("id", i);
-                        obj.addProperty("time", data.getString("timestamp"));
-                        obj.addProperty("name", data.getString("website").replaceAll("http://", "").replaceAll("https://", ""));
-                        obj.addProperty("success", data.getBoolean("success"));
-                        obj.addProperty("ping", data.getInt("ping"));
-                        obj.addProperty("log", data.getString("ping_errorcode"));
+				} else {
+					throw new NullPointerException("data Result = null");
+				}
 
-                        logs.add(obj);
-                        i++;
-                    }
+			} catch (SQLException | NullPointerException e) {
+				log.error(e.getMessage(), e);
+				try {
+					String erresp = "Something went wrong! - please try again in a few seconds!";
+					exchange.getResponseHeaders().add("Content-Type", "text/plain");
+					exchange.sendResponseHeaders(500, erresp.getBytes(StandardCharsets.UTF_8).length);
+					os.write(erresp.getBytes(StandardCharsets.UTF_8));
+					os.close();
+				} catch (IOException e1) {
+					log.error(e.getMessage(), e);
+				}
+			}
 
-                    for(int j = logs.size()-1; j >= 0;j-- ){
-                        response.add(logs.get(j));
-                    }
-
-                    try {
-                        exchange.getResponseHeaders().add("Content-Type", "text/plain");
-                        exchange.sendResponseHeaders(200, response.toString().getBytes(StandardCharsets.UTF_8).length);
-                        os.write(response.toString().getBytes(StandardCharsets.UTF_8));
-                        os.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-
-                } else {
-                    throw new NullPointerException("data Result = null");
-                }
-
-            } catch (SQLException | NullPointerException e) {
-
-                try {
-
-                    String errresp = "Something went wrong! - please try again in a few seconds!";
-                    exchange.getResponseHeaders().add("Content-Type", "text/plain");
-                    exchange.sendResponseHeaders(500, errresp.getBytes(StandardCharsets.UTF_8).length);
-                    os.write(errresp.getBytes(StandardCharsets.UTF_8));
-                    os.close();
-
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-            }
-
-        } else {
-            try {
-                String response = "Request Error - please try again in a few minutes!";
-                exchange.getResponseHeaders().add("Content-Type", "text/plain");
-                exchange.sendResponseHeaders(400, response.getBytes(StandardCharsets.UTF_8).length);
-                os.write(response.getBytes(StandardCharsets.UTF_8));
-                os.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+		} else {
+			super.sendRequestError(exchange, os);
+		}
+	}
 }

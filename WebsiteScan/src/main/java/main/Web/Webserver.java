@@ -2,7 +2,7 @@ package main.Web;
 
 import com.sun.net.httpserver.HttpServer;
 
-import java.io.*;
+import java.io.IOException;
 import java.net.InetSocketAddress;
 
 public class Webserver {

@@ -2,10 +2,10 @@ package main.Web;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
-import main.Main;
 import main.util.MySql;
 import main.util.Validator;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,100 +15,94 @@ import java.nio.charset.StandardCharsets;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class WebsiteAddHandler implements HttpHandler {
+public class WebsiteAddHandler extends GenericHandler implements HttpHandler {
 
-    private final Logger log = Main.INSTANCE.getMainLogger();
+	private final Logger log;
 
-    @Override
-    public void handle(HttpExchange exchange) throws IOException {
+	public WebsiteAddHandler() {
+		super();
+		log = LoggerFactory.getLogger(getClass());
+	}
 
-        BufferedReader read = new BufferedReader(new InputStreamReader(exchange.getRequestBody()));
-        OutputStream os = exchange.getResponseBody();
+	@Override
+	public void handle(HttpExchange exchange) throws IOException {
 
-        String website = read.readLine();
-        read.close();
+		BufferedReader read = new BufferedReader(new InputStreamReader(exchange.getRequestBody()));
+		OutputStream os = exchange.getResponseBody();
 
-        website = website.replaceAll("add:", "");
+		String website = read.readLine();
+		read.close();
 
-        if (!(website.startsWith("http://") || website.startsWith("https://"))) {
-            website = "http://" + website;
-        }
+		website = website.replaceAll("add:", "");
 
-        exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
+		website = super.validateLink(website);
 
-        if (exchange.getRequestMethod().equalsIgnoreCase("OPTIONS")) {
+		exchange = super.sendCors(exchange);
+		if (exchange == null) {
+			return;
+		}
+		addWebsite(website, exchange, os);
+	}
 
-            log.debug("OPTIONS request accepted - returning CORS allow");
-            exchange.getResponseHeaders().add("Access-Control-Allow-Methods", "GET, POST, OPTIONS, HEAD");
-            exchange.getResponseHeaders().add("Access-Control-Allow-Headers", "Content-Type,Authorization");
-            exchange.sendResponseHeaders(204, -1);
+	public void addWebsite(String website, HttpExchange exchange, OutputStream os) throws IOException {
+		String response;
 
-            return;
-        }
-        addWebsite(website, exchange, os);
-    }
+		if (!Validator.isValidURL(website)) {
 
-    public void addWebsite(String website, HttpExchange exchange, OutputStream os) throws IOException {
-        String response;
-        try {
-            if (Validator.isValidURL(website)) {
-                ResultSet set = MySql.onQuery("Select website FROM websites");
-                boolean alreadylisted = false;
+			response = "Please insert a valid Website!";
 
-                if (set != null) {
-                    while (set.next()) {
+			exchange.getResponseHeaders().add("Content-Type", "text/plain");
+			exchange.sendResponseHeaders(400, response.getBytes(StandardCharsets.UTF_8).length);
+			os.write(response.getBytes(StandardCharsets.UTF_8));
+			os.close();
+			return;
+		}
+		try (ResultSet set = MySql.onQuery("Select website FROM websites")) {
 
-                        String dbwebsite = set.getString("website");
+			boolean alreadylisted = false;
 
-                        if (!(dbwebsite.startsWith("http://") || dbwebsite.startsWith("https://"))) {
-                            dbwebsite = "http://" + dbwebsite;
-                        }
+			if (set != null) {
+				while (set.next()) {
 
-                        if (dbwebsite.equalsIgnoreCase(website)) {
-                            alreadylisted = true;
-                            break;
-                        }
+					String dbwebsite = set.getString("website");
 
-                    }
-                }
+					if (dbwebsite.equalsIgnoreCase(website)) {
+						alreadylisted = true;
+						break;
+					}
 
-                if (alreadylisted) {
-                    response = "Website already listed!";
+				}
+			}
 
-                    exchange.getResponseHeaders().add("Content-Type", "text/plain");
-                    exchange.sendResponseHeaders(400, response.getBytes(StandardCharsets.UTF_8).length);
+			if (alreadylisted) {
+				response = "Website already listed!";
 
-                } else {
+				exchange.getResponseHeaders().add("Content-Type", "text/plain");
+				exchange.sendResponseHeaders(400, response.getBytes(StandardCharsets.UTF_8).length);
 
-                    response = "Website successful added!";
+			} else {
 
-                    MySql.onUpdate("INSERT INTO websites(website, enabled) VALUES('" + website + "', true)");
-                    exchange.getResponseHeaders().add("Content-Type", "text/plain");
-                    exchange.sendResponseHeaders(200, response.getBytes(StandardCharsets.UTF_8).length);
+				response = "Website successful added!";
 
-                }
+				MySql.onUpdate("INSERT INTO websites(website, enabled) VALUES(?, ?)", website, true);
+				exchange.getResponseHeaders().add("Content-Type", "text/plain");
+				exchange.sendResponseHeaders(200, response.getBytes(StandardCharsets.UTF_8).length);
 
-            } else {
+			}
 
-                response = "Please insert a valid Website!";
+			os.write(response.getBytes(StandardCharsets.UTF_8));
+			os.close();
 
-                exchange.getResponseHeaders().add("Content-Type", "text/plain");
-                exchange.sendResponseHeaders(400, response.getBytes(StandardCharsets.UTF_8).length);
+		} catch (SQLException e) {
+			log.error(e.getMessage(),e);
 
+			response = "Couldn't add website!";
 
-            }
-            os.write(response.getBytes(StandardCharsets.UTF_8));
-            os.close();
-        } catch (SQLException e) {
+			exchange.sendResponseHeaders(500, response.getBytes(StandardCharsets.UTF_8).length);
 
-            response = "Couldn't add website!";
+			os.write(response.getBytes(StandardCharsets.UTF_8));
+			os.close();
 
-            exchange.sendResponseHeaders(500, response.getBytes(StandardCharsets.UTF_8).length);
-
-            os.write(response.getBytes(StandardCharsets.UTF_8));
-            os.close();
-
-
-        }
-    }
+		}
+	}
 }

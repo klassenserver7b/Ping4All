@@ -12,10 +12,6 @@ public class Validator {
         }
 
         String[] shemes = {"http", "https"};
-        if(new UrlValidator(shemes, UrlValidator.ALLOW_LOCAL_URLS).isValid(url)){
-            return true;
-        }
-
-        return false;
+        return new UrlValidator(shemes, UrlValidator.ALLOW_LOCAL_URLS).isValid(url);
     }
 }

@@ -2,9 +2,9 @@ package main.Web;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
-import main.Main;
 import main.util.MySql;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,69 +13,63 @@ import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 
-public class WebsiteRemoveHandler implements HttpHandler {
+public class WebsiteRemoveHandler extends GenericHandler implements HttpHandler {
 
-    private final Logger log = Main.INSTANCE.getMainLogger();
+	private final Logger log;
 
-    @Override
-    public void handle(HttpExchange exchange) throws IOException {
+	public WebsiteRemoveHandler() {
+		super();
+		log = LoggerFactory.getLogger(getClass());
+	}
 
-        BufferedReader read = new BufferedReader(new InputStreamReader(exchange.getRequestBody()));
-        OutputStream os = exchange.getResponseBody();
+	@Override
+	public void handle(HttpExchange exchange) throws IOException {
 
-        String website = read.readLine();
-        read.close();
-        website = website.replaceAll("remove:", "");
+		BufferedReader read = new BufferedReader(new InputStreamReader(exchange.getRequestBody()));
+		OutputStream os = exchange.getResponseBody();
 
-        if (!(website.startsWith("http://") || website.startsWith("https://"))) {
-            website = "http://" + website;
-        }
+		String website = read.readLine();
+		read.close();
+		website = website.replaceAll("remove:", "");
 
-        exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
+		website = super.validateLink(website);
 
-        if (exchange.getRequestMethod().equalsIgnoreCase("OPTIONS")) {
+		exchange = super.sendCors(exchange);
+		if (exchange == null) {
+			return;
+		}
 
-            log.debug("OPTIONS request accepted - returning CORS allow");
-            exchange.getResponseHeaders().add("Access-Control-Allow-Methods", "GET, POST, OPTIONS, HEAD");
-            exchange.getResponseHeaders().add("Access-Control-Allow-Headers", "Content-Type,Authorization");
-            exchange.sendResponseHeaders(204, -1);
+		removeWebsite(website, exchange, os);
+	}
 
-            return;
-        }
+	public void removeWebsite(String website, HttpExchange exchange, OutputStream os) {
+		String response;
 
-        removeWebsite(website, exchange, os);
-    }
+		try {
 
-    public void removeWebsite(String website, HttpExchange exchange, OutputStream os) {
-        String response;
+			response = "Website successful removed!";
 
-        try {
+			MySql.onUpdate("Delete FROM websites WHERE website = ?", website);
+			exchange.getResponseHeaders().add("Content-Type", "text/plain");
+			exchange.sendResponseHeaders(200, response.getBytes(StandardCharsets.UTF_8).length);
 
-            response = "Website successful removed!";
+			os.write(response.getBytes(StandardCharsets.UTF_8));
+			os.close();
 
-            MySql.onUpdate("Delete FROM websites WHERE website = '" + website + "'");
-            exchange.getResponseHeaders().add("Content-Type", "text/plain");
-            exchange.sendResponseHeaders(200, response.getBytes(StandardCharsets.UTF_8).length);
+		} catch (SQLException | IOException e) {
 
+			response = "Couldn't remove website!";
 
-            os.write(response.getBytes(StandardCharsets.UTF_8));
-            os.close();
+			try {
 
-        } catch (SQLException | IOException e) {
+				exchange.sendResponseHeaders(500, response.getBytes(StandardCharsets.UTF_8).length);
+				os.write(response.getBytes(StandardCharsets.UTF_8));
+				os.close();
 
-            response = "Couldn't remove website!";
+			} catch (IOException ex) {
+				log.error(ex.getMessage(), ex);
+			}
 
-            try {
-
-                exchange.sendResponseHeaders(500, response.getBytes(StandardCharsets.UTF_8).length);
-                os.write(response.getBytes(StandardCharsets.UTF_8));
-                os.close();
-
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-
-
-        }
-    }
+		}
+	}
 }
